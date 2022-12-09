@@ -11,6 +11,7 @@ const auth = require('./middlewares/auth');
 const NotFoundError = require('./errors/NotFoundError');
 const defaultErrorHandler = require('./errors/defaultErrorHandler');
 const { signupValidate, loginValidate } = require('./middlewares/celebrate');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
 
@@ -33,8 +34,10 @@ app.get('/crash-test', () => {
 app.post('/signin', loginValidate, login);
 app.post('/signup', signupValidate, createUser);
 app.use(auth);
+app.use(requestLogger);
 app.use('/users', usersRouter);
 app.use('/cards', cardsRouter);
+app.use(errorLogger);
 app.use('/*', (req, res, next) => next(new NotFoundError('Запрашиваемый ресурс не найден')));
 
 app.use(errors());
