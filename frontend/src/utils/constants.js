@@ -18,13 +18,13 @@
 //тут хранятся экземпляры класса FormValidator
 export const formValidators = {};
 
-export const apiConfig = {
-  url: "https://nomoreparties.co/v1/cohort-45",
-  headers: {
-    authorization: "672e954f-60da-45a7-8529-433a3c093bb6",
-    "Content-Type": "application/json",
-  },
-};
+// export const apiConfig = {
+//   url: "https://nomoreparties.co/v1/cohort-45",
+//   headers: {
+//     authorization: "672e954f-60da-45a7-8529-433a3c093bb6",
+//     "Content-Type": "application/json",
+//   },
+// };
 
 export const cardConfig = {
   templateSelector: '.elements-template',
