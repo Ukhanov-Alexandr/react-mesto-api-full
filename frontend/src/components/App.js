@@ -51,8 +51,8 @@ function App() {
 
   const handleCardLike = useCallback(
     (card) => {
-      console.log(card.likes);
-      console.log(card.likes.some((id) => id === currentUser._id));
+      // console.log(card.likes);
+      // console.log(card.likes.some((id) => id === currentUser._id));
       const isLiked = card.likes.some((id) => id === currentUser._id);
       const jwt = localStorage.getItem("jwt");
       // console.log(isLiked);
