@@ -3,6 +3,7 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-IP 84.201.153.104
-Frontend https://mesto.front.ukh.nomoredomains.club
-Backend https://api.mesto.ukh.nomoredomains.club
+ссылка на репозиторий: https://github.com/Ukhanov-Alexandr/react-mesto-api-full  
+IP 84.201.153.104  
+Frontend https://mesto.front.ukh.nomoredomains.club  
+Backend https://api.mesto.ukh.nomoredomains.club  
