@@ -298,7 +298,7 @@ function App() {
   useEffect(() => {
     console.log('hey!');
     tokenCheck();
-  }, []);
+  });
 
   function signOut() {
     localStorage.removeItem("jwt");
