@@ -2,7 +2,7 @@ import { data } from "autoprefixer";
 // import { apiConfig } from './constants'
 
 const apiConfig = {
-  url: "https://nomoreparties.co/v1/cohort-45",
+  url: "https://api.mesto.ukh.nomoredomains.club",
   headers: {
     authorization: "672e954f-60da-45a7-8529-433a3c093bb6",
     "Content-Type": "application/json",
