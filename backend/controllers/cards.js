@@ -43,7 +43,7 @@ module.exports.likeCard = (req, res, next) => {
     { new: true },
   )
     .orFail(new NotFoundError('Передан несуществующий _id карточки'))
-    .populate('owner')
+    // .populate('owner')
     .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'CastError') {
@@ -61,7 +61,7 @@ module.exports.dislikeCard = (req, res, next) => {
     { new: true },
   )
     .orFail(new NotFoundError('Передан несуществующий _id карточки'))
-    .populate('owner')
+    // .populate('owner')
     .then((card) => res.send(card))
     .catch((err) => {
       if (err.name === 'CastError') {
