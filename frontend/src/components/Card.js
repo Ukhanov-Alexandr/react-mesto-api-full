@@ -11,10 +11,11 @@ const Card = ({ card, onClick, onCardLike, onTrashClick }) => {
 
   function handleLikeClick() {
     onCardLike(card);
-    console.log(currentUser._id);
     console.log(card);
+    console.log(currentUser._id);
     console.log(card.owner._id);
-    console.log(card.owner === currentUser._id);
+    console.log(card.owner._id === currentUser._id);
+    console.log(card.owner._id.toString() === currentUser._id.toString());
   }
 
   function handleDeleteClick() {
