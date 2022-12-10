@@ -52,10 +52,10 @@ function App() {
   const handleCardLike = useCallback(
     (card) => {
       const isLiked = card.likes.some((i) => i._id === currentUser._id);
-
+      const jwt = localStorage.getItem("jwt");
       if (isLiked) {
         api
-          .unlikeCard(card._id)
+          .unlikeCard(card._id, jwt)
           .then((res) => {
             setCards((state) =>
               state.map((c) => (c._id === card._id ? res : c))
@@ -68,7 +68,7 @@ function App() {
           });
       } else {
         api
-          .setlikeCard(card._id)
+          .setlikeCard(card._id, jwt)
           .then((res) => {
             setCards((state) =>
               state.map((c) => (c._id === card._id ? res : c))
@@ -86,8 +86,10 @@ function App() {
 
   const handleCardDelete = useCallback((card) => {
     setIsRequestingServer(true);
-    api
-      .deleteCard(card._id)
+    if (localStorage.getItem("jwt")) {
+      const jwt = localStorage.getItem("jwt");
+      api
+      .deleteCard(card._id, jwt)
       .then(() => {
         setCards((state) => state.filter((c) => c._id !== card._id && c));
         closeConfirmationPopup();
@@ -100,6 +102,7 @@ function App() {
       .finally(() => {
         setIsRequestingServer(false);
       });
+    }
   }, []);
 
   const handleCardClick = useCallback((card) => {
@@ -162,8 +165,10 @@ function App() {
 
   const handleUpdateUser = useCallback((data) => {
     setIsRequestingServer(true);
-    api
-      .patchProfile(data)
+    if (localStorage.getItem("jwt")) {
+      const jwt = localStorage.getItem("jwt");
+      api
+      .patchProfile(data, jwt)
       .then((res) => {
         setСurrentUser(res);
         closeAllPopups();
@@ -178,12 +183,15 @@ function App() {
           setIsRequestingServer(false);
         }, 300);
       });
+    }
   }, []);
 
   const handleUpdateAvatar = useCallback((data) => {
     setIsRequestingServer(true);
-    api
-      .setNewAvatar(data)
+    if (localStorage.getItem("jwt")) {
+      const jwt = localStorage.getItem("jwt");
+      api
+      .setNewAvatar(data, jwt)
       .then((res) => {
         console.dir(res);
         setСurrentUser(res);
@@ -199,13 +207,16 @@ function App() {
           setIsRequestingServer(false);
         }, 300);
       });
+    }
   }, []);
 
   const handleAddPlaceSubmit = useCallback(
     (data) => {
       setIsRequestingServer(true);
-      api
-        .addNewCard(data)
+      if (localStorage.getItem("jwt")) {
+        const jwt = localStorage.getItem("jwt");
+        api
+        .addNewCard(data, jwt)
         .then((res) => {
           setCards([res, ...cards]);
           closeAllPopups();
@@ -220,6 +231,7 @@ function App() {
             setIsRequestingServer(false);
           }, 300);
         });
+      }
     },
     [cards]
   );
