@@ -4,7 +4,7 @@ import { data } from "autoprefixer";
 const apiConfig = {
   url: "https://api.mesto.ukh.nomoredomains.club",
   headers: {
-    authorization: "672e954f-60da-45a7-8529-433a3c093bb6",
+    // authorization: "672e954f-60da-45a7-8529-433a3c093bb6",
     "Content-Type": "application/json",
   },
 };
