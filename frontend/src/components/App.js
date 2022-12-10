@@ -300,7 +300,7 @@ function App() {
   useEffect(() => {
     console.log('hey!');
     tokenCheck();
-  }, [loggedIn, cards]);
+  }, []);
 
   function signOut() {
     localStorage.removeItem("jwt");
