@@ -281,8 +281,6 @@ function App() {
     auth
       .authorize(email, password)
       .then((data) => {
-        // tokenCheck();
-        console.log(data);
         if (data.token) {
           setTimeout(() => {
             setLoggedIn(true);
@@ -313,9 +311,8 @@ function App() {
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
       // здесь будем проверять токен
-      // console.log(jwt);
       auth.getContent(jwt).then((res) => {
-        // console.log(res);
+        console.log(res.json());
         setEmail(res.email);
         // console.log(!!res);
         if (res) {
