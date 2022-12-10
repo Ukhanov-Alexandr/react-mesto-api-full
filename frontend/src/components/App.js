@@ -284,7 +284,6 @@ function App() {
         // tokenCheck();
         console.log(data);
         if (data.token) {
-          auth.getContent(data.token);
           setTimeout(() => {
             setLoggedIn(true);
             setEmail(email)
@@ -295,6 +294,7 @@ function App() {
           setIsInfoTooltipOpen(true);
         }
       })
+      .getContent(localStorage.getItem("jwt"))
       .catch((err) => console.log(err));
   };
 
