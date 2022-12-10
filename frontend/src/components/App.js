@@ -224,8 +224,29 @@ function App() {
     [cards]
   );
 
+  // function tokenCheck() {
+  //   console.log(!!localStorage.getItem("jwt"));
+  //   if (localStorage.getItem("jwt")) {
+  //     const jwt = localStorage.getItem("jwt");
+  //     // здесь будем проверять токен
+  //     console.log(jwt);
+  //     auth.getContent(jwt).then((res) => {
+  //       // console.log(res);
+  //       setEmail(res.email);
+  //       // console.log(!!res);
+  //       if (res) {
+  //         setLoggedIn(true);
+  //         history.push("/");
+  //       }
+  //     })
+  //     .catch((err) => console.log(err));;
+  //   }
+  // }
+
   useEffect(() => {
-    Promise.all([api.getUser(), api.getCards()])
+    if (localStorage.getItem("jwt")) {
+      const jwt = localStorage.getItem("jwt");
+      Promise.all([api.getUser(jwt), api.getCards(jwt)])
       .then(([user, cards]) => {
         setСurrentUser(user);
         setCards(cards);
@@ -235,6 +256,7 @@ function App() {
         console.dir(err);
         openErrorPopup(err);
       });
+    }
   }, []);
 
 //ниже реализован функционал 12 спринта
@@ -281,7 +303,7 @@ function App() {
   };
 
   useEffect(() => {
-    console.log('hey!');
+    // console.log('hey!');
     tokenCheck();
   }, []);
 
@@ -298,9 +320,9 @@ function App() {
       // здесь будем проверять токен
       console.log(jwt);
       auth.getContent(jwt).then((res) => {
-        console.log(res);
+        // console.log(res);
         setEmail(res.email);
-        console.log(!!res);
+        // console.log(!!res);
         if (res) {
           setLoggedIn(true);
           history.push("/");

@@ -3,10 +3,10 @@ import { data } from "autoprefixer";
 
 const apiConfig = {
   url: "https://api.mesto.ukh.nomoredomains.club",
-  headers: {
-    authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk0MTU4ODViOWZjNzBhM2VhM2Y2N2UiLCJpYXQiOjE2NzA2NDkyNzEsImV4cCI6MTY3MTI1NDA3MX0.1bkFJYz_GqtXr29qMHCZI9fOPu5UmmLiSqdKqt_3RWU",
-    "Content-Type": "application/json",
-  },
+  // headers: {
+  //   authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk0MTU4ODViOWZjNzBhM2VhM2Y2N2UiLCJpYXQiOjE2NzA2NDkyNzEsImV4cCI6MTY3MTI1NDA3MX0.1bkFJYz_GqtXr29qMHCZI9fOPu5UmmLiSqdKqt_3RWU",
+  //   "Content-Type": "application/json",
+  // },
 };
 
 class Api {
@@ -25,17 +25,23 @@ class Api {
     return Promise.reject(err);
   }
 
-  getUser() {
+  getUser(token) {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
     }).then((res) => this._checkResponse(res));
   }
 
-  getCards() {
+  getCards(token) {
     return fetch(`${this._url}/cards`, {
       method: "GET",
-      headers: this._headers,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
     }).then((res) => this._checkResponse(res));
   }
 
