@@ -272,9 +272,6 @@ function App() {
         } else {
           setLoggedIn(false);
           setIsInfoTooltipOpen(true);
-          // setTimeout(() => {
-          //   history.push("/sign-in");
-          // }, 800);
         }
       })
       .catch((err) => console.log(err));
@@ -284,8 +281,10 @@ function App() {
     auth
       .authorize(email, password)
       .then((data) => {
-        tokenCheck();
+        // tokenCheck();
+        console.log(data);
         if (data.token) {
+          auth.getContent(data.token);
           setTimeout(() => {
             setLoggedIn(true);
             setEmail(email)
