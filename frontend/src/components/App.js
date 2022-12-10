@@ -225,6 +225,7 @@ function App() {
   );
 
   useEffect(() => {
+    tokenCheck();
     Promise.all([api.getUser(), api.getCards()])
       .then(([user, cards]) => {
         setСurrentUser(user);
