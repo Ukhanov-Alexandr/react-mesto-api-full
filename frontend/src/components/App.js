@@ -225,7 +225,7 @@ function App() {
   );
 
   useEffect(() => {
-    tokenCheck();
+    // tokenCheck();
     Promise.all([api.getUser(), api.getCards()])
       .then(([user, cards]) => {
         setСurrentUser(user);
@@ -283,7 +283,7 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
-  }, []);
+  }, [loggedIn]);
 
   function signOut() {
     localStorage.removeItem("jwt");
