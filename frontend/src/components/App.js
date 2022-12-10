@@ -51,8 +51,15 @@ function App() {
 
   const handleCardLike = useCallback(
     (card) => {
-      const isLiked = card.likes.some((i) => i._id === currentUser._id);
+      console.log(card);
+      const isLiked = card.likes.some((i) => {
+        // eslint-disable-next-line no-unused-expressions
+        i._id === currentUser._id
+        console.log(i);
+        console.log(currentUser._id);
+      });
       const jwt = localStorage.getItem("jwt");
+      console.log(isLiked);
       if (isLiked) {
         api
           .unlikeCard(card._id, jwt)
@@ -235,25 +242,6 @@ function App() {
     },
     [cards]
   );
-
-  // function tokenCheck() {
-  //   console.log(!!localStorage.getItem("jwt"));
-  //   if (localStorage.getItem("jwt")) {
-  //     const jwt = localStorage.getItem("jwt");
-  //     // здесь будем проверять токен
-  //     console.log(jwt);
-  //     auth.getContent(jwt).then((res) => {
-  //       // console.log(res);
-  //       setEmail(res.email);
-  //       // console.log(!!res);
-  //       if (res) {
-  //         setLoggedIn(true);
-  //         history.push("/");
-  //       }
-  //     })
-  //     .catch((err) => console.log(err));;
-  //   }
-  // }
 
   useEffect(() => {
     if (localStorage.getItem("jwt")) {
