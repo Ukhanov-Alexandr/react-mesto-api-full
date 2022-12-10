@@ -296,9 +296,10 @@ function App() {
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
       // здесь будем проверять токен
+      console.log(jwt);
       auth.getContent(jwt).then((res) => {
+        console.log(res);
         setEmail(res.data.email);
-        console.log(!!res);
         if (res) {
           setLoggedIn(true);
           history.push("/");
