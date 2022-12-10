@@ -51,15 +51,11 @@ function App() {
 
   const handleCardLike = useCallback(
     (card) => {
-      console.log(card);
-      const isLiked = card.likes.some((id) => {
-        // eslint-disable-next-line no-unused-expressions
-        id === currentUser._id
-        console.log(id);
-        console.log(currentUser._id);
-      });
+      console.log(card.likes);
+      console.log(card.likes.some((id) => id === currentUser._id));
+      const isLiked = card.likes.some((id) => id === currentUser._id);
       const jwt = localStorage.getItem("jwt");
-      console.log(isLiked);
+      // console.log(isLiked);
       if (isLiked) {
         api
           .unlikeCard(card._id, jwt)
