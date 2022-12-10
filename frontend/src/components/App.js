@@ -281,7 +281,7 @@ function App() {
   };
 
   useEffect(() => {
-    console.log('hey!')
+    console.log('hey!');
     tokenCheck();
   }, []);
 
@@ -292,11 +292,13 @@ function App() {
   }
 
   function tokenCheck() {
+    console.log(!!localStorage.getItem("jwt"));
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
       // здесь будем проверять токен
       auth.getContent(jwt).then((res) => {
         setEmail(res.data.email);
+        console.log(!!res);
         if (res) {
           setLoggedIn(true);
           history.push("/");
