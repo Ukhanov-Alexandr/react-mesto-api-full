@@ -299,7 +299,8 @@ function App() {
       console.log(jwt);
       auth.getContent(jwt).then((res) => {
         console.log(res);
-        setEmail(res.data.email);
+        setEmail(res.email);
+        console.log(!!res);
         if (res) {
           setLoggedIn(true);
           history.push("/");
