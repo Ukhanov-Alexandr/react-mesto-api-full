@@ -13,7 +13,7 @@ function Main({
 }) {
   
   const currentUser = React.useContext(CurrentUserContext);
-  const cardsElements = cards.map((item) => (
+  const cardsElements = cards.reverse().map((item) => (
     <Card
       key={item._id}
       card={item}
