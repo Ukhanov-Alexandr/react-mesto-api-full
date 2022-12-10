@@ -52,10 +52,10 @@ function App() {
   const handleCardLike = useCallback(
     (card) => {
       console.log(card);
-      const isLiked = card.likes.some((i) => {
+      const isLiked = card.likes.some((id) => {
         // eslint-disable-next-line no-unused-expressions
-        i._id === currentUser._id
-        console.log(i);
+        id === currentUser._id
+        console.log(id);
         console.log(currentUser._id);
       });
       const jwt = localStorage.getItem("jwt");
