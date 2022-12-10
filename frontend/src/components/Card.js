@@ -11,6 +11,7 @@ const Card = ({ card, onClick, onCardLike, onTrashClick }) => {
 
   function handleLikeClick() {
     onCardLike(card);
+    console.log(currentUser._id);
     console.log(card);
     console.log(card.owner);
     console.log(card.owner === currentUser._id);
