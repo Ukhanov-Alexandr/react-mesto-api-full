@@ -306,12 +306,12 @@ function App() {
     setLoggedIn(false);
   }
 
-  function tokenCheck() {
+  async function tokenCheck() {
     console.log(!!localStorage.getItem("jwt"));
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
       // здесь будем проверять токен
-      auth.getContent(jwt).then((res) => {
+      await auth.getContent(jwt).then((res) => {
         console.log(res.json());
         setEmail(res.email);
         // console.log(!!res);
@@ -320,7 +320,7 @@ function App() {
           history.push("/");
         }
       })
-      .catch((err) => console.log(err));;
+      .catch((err) => console.log(err));
     }
   }
 
