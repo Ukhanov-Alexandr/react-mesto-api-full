@@ -156,7 +156,6 @@ function App() {
 
   const handleOverlayClick = (evt) => {
     if (evt.target === evt.currentTarget) {
-      console.log(evt.target === evt.currentTarget)
       closeAllPopups();
     }
   };
