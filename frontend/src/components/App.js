@@ -284,6 +284,7 @@ function App() {
     auth
       .authorize(email, password)
       .then((data) => {
+        tokenCheck();
         if (data.token) {
           setTimeout(() => {
             setLoggedIn(true);
