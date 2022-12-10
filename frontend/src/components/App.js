@@ -221,7 +221,7 @@ function App() {
         api
         .addNewCard(data, jwt)
         .then((res) => {
-          setCards([res, ...cards]);
+          setCards([...cards, res]);
           closeAllPopups();
         })
         .catch((err) => {
