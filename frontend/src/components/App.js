@@ -296,9 +296,9 @@ function App() {
   };
 
   useEffect(() => {
-    console.log('hey!');
+    // console.log('hey!');
     tokenCheck();
-  });
+  }, []);
 
   function signOut() {
     localStorage.removeItem("jwt");
@@ -306,13 +306,13 @@ function App() {
     setLoggedIn(false);
   }
 
-  async function tokenCheck() {
+  function tokenCheck() {
     console.log(!!localStorage.getItem("jwt"));
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
       // здесь будем проверять токен
-      await auth.getContent(jwt).then((res) => {
-        console.log(res.json());
+      auth.getContent(jwt).then((res) => {
+        console.log(res);
         setEmail(res.email);
         // console.log(!!res);
         if (res) {

@@ -35,17 +35,10 @@ export const getContent = (token) => {
     return fetch(`${BASE_URL}/users/me`, {
       method: 'GET',
       headers: {
-        'authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
+        'authorization': `Bearer ${token}`,
       }
     })
-    .then((res) => {
-      console.log(res.json());
-      return res.json()
-    })
-    .then((data) => {
-      console.log(data);
-      return data;
-    })
+    .then(res => res.json())
   } 
 
