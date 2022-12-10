@@ -294,14 +294,13 @@ function App() {
           setIsInfoTooltipOpen(true);
         }
       })
-      .getContent(localStorage.getItem("jwt"))
       .catch((err) => console.log(err));
   };
 
   useEffect(() => {
-    // console.log('hey!');
+    console.log('hey!');
     tokenCheck();
-  }, []);
+  }, [loggedIn]);
 
   function signOut() {
     localStorage.removeItem("jwt");
