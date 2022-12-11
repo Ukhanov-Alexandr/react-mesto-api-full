@@ -301,14 +301,18 @@ function App() {
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
       auth.getContent(jwt).then((user) => {
-        setСurrentUser(user);
-        setEmail(user.email);
-        if (user) {
-          api.getCards(jwt).then((cards)=> {
-            setCards(cards)
-          })
-          setLoggedIn(true);
-          history.push("/");
+        if (!Array.isArray(user)) {
+          setСurrentUser(user);
+          setEmail(user.email);
+          if (user) {
+            api.getCards(jwt).then((cards)=> {
+              setCards(cards)
+            })
+            setLoggedIn(true);
+            history.push("/");
+          }
+        } else {
+          signOut()
         }
       })
       .catch((err) => console.log(err));
