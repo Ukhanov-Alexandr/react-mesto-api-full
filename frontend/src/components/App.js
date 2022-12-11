@@ -314,7 +314,8 @@ function App() {
       auth.getContent(jwt).then((res) => {
         console.log(`то что попало в res после getCont - ${res}`);
         setEmail(res.email);
-        console.log(!!res);
+        setСurrentUser(res);
+        // console.log(!!res);
         if (res) {
           setLoggedIn(true);
           history.push("/");
