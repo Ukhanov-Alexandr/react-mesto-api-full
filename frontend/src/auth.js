@@ -32,6 +32,7 @@ export const authorize = (email, password) => {
 };
 
 export const getContent = (token) => {
+    console.log(`getContent token - ${token}`);
     return fetch(`${BASE_URL}/users/me`, {
       method: 'GET',
       headers: {
@@ -39,6 +40,10 @@ export const getContent = (token) => {
         'authorization': `Bearer ${token}`,
       }
     })
-    .then(res => res.json())
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(`данные от getContent - ${token}`);
+      return data;
+    })
   } 
 
