@@ -42,8 +42,8 @@ export const getContent = (token) => {
     })
     .then((res) => res.json())
     .then((data) => {
-      console.log(`данные от getContent - ${token}`);
-      return data;
+      // console.log(`данные от getContent - ${token}`);
+      return JSON.stringify(data);
     })
   } 
 
