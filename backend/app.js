@@ -17,17 +17,10 @@ app.use(helmet());
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
 mongoose.connect('mongodb://localhost:27017/mestodb')
   .then(() => console.log('«Соединение с базой данных успешно»'))
   .catch((err) => console.log(err, '«Ошибка подключения к базе данных»'));
-
 app.use(requestLogger);
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
 app.use(routes);
 app.use(errorLogger);
 app.use(errors());
