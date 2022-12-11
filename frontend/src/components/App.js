@@ -283,22 +283,25 @@ function App() {
       .then((data) => {
         if (data.token) {
 
-          auth.getContent(data.token).then((user)=>{
-            debugger
-            setСurrentUser(user);
-            api.setNewAvatar(user.avatar, data.token)
-            api.patchProfile(data, data.tokent)
-          })
+          // auth.getContent(data.token).then((user)=>{
+          //   debugger
+          //   setСurrentUser(user);
+          //   api.setNewAvatar(user.avatar, data.token)
+          //   api.patchProfile(data, data.tokent)
+          // })
 
           setTimeout(() => {
             setLoggedIn(true);
-            setEmail(email)
+            // setEmail(email)
             // history.push("/");
           }, 100);
         } else {
           setLoggedIn(false);
           setIsInfoTooltipOpen(true);
         }
+      })
+      .then(()=>{
+        tokenCheck()
       })
       .catch((err) => console.log(err));
   };
