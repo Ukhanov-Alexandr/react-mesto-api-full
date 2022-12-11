@@ -23,7 +23,6 @@ export const authorize = (email, password) => {
   })
     .then(res => res.json())
     .then((data) => {
-        // console.log(data.token)
       if (data) {
         localStorage.setItem("jwt", data.token);
         return data;
@@ -32,7 +31,6 @@ export const authorize = (email, password) => {
 };
 
 export const getContent = (token) => {
-    console.log(`getContent token - ${token}`);
     return fetch(`${BASE_URL}/users/me`, {
       method: 'GET',
       headers: {
@@ -42,7 +40,6 @@ export const getContent = (token) => {
     })
     .then((res) => res.json())
     .then((data) => {
-      // console.log(`данные от getContent - ${token}`);
       return data;
     })
   } 

@@ -51,11 +51,8 @@ function App() {
 
   const handleCardLike = useCallback(
     (card) => {
-      // console.log(card.likes);
-      // console.log(card.likes.some((id) => id === currentUser._id));
       const isLiked = card.likes.some((id) => id === currentUser._id);
       const jwt = localStorage.getItem("jwt");
-      // console.log(isLiked);
       if (isLiked) {
         api
           .unlikeCard(card._id, jwt)
@@ -255,7 +252,6 @@ function App() {
     }
   }, []);
 
-//ниже реализован функционал 12 спринта
   const handleSignUp = ({ email, password }) => {
     if (!email || !password) {
       return;
@@ -283,31 +279,15 @@ function App() {
       .then((data) => {
         if (data.token) {
           tokenCheck()
-          // auth.getContent(data.token).then((user)=>{
-          //   debugger
-          //   setСurrentUser(user);
-          //   api.setNewAvatar(user.avatar, data.token)
-          //   api.patchProfile(data, data.tokent)
-          // })
-
-          // setTimeout(() => {
-          //   setLoggedIn(true);
-          //   setEmail(email)
-          //   history.push("/");
-          // }, 100);
         } else {
           setLoggedIn(false);
           setIsInfoTooltipOpen(true);
         }
       })
-      // .then(()=>{
-      //   tokenCheck()
-      // })
       .catch((err) => console.log(err));
   };
 
   useEffect(() => {
-    // console.log('hey!');
     tokenCheck();
   }, []);
 
@@ -318,13 +298,9 @@ function App() {
   }
 
   function tokenCheck() {
-    console.log(!!localStorage.getItem("jwt"));
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
-      // здесь будем проверять токен
       auth.getContent(jwt).then((user) => {
-        console.log(`то что попало в res после getCont - ${user}`);
-        console.dir(user);
         setСurrentUser(user);
         setEmail(user.email);
         if (user) {
