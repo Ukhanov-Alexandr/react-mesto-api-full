@@ -282,10 +282,18 @@ function App() {
       .authorize(email, password)
       .then((data) => {
         if (data.token) {
+
+          auth.getContent(data.token).then((user)=>{
+            debugger
+            setСurrentUser(user);
+            api.setNewAvatar(user.avatar, data.token)
+            api.patchProfile(data, data.tokent)
+          })
+
           setTimeout(() => {
             setLoggedIn(true);
             setEmail(email)
-            history.push("/");
+            // history.push("/");
           }, 100);
         } else {
           setLoggedIn(false);
@@ -311,12 +319,12 @@ function App() {
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
       // здесь будем проверять токен
-      auth.getContent(jwt).then((res) => {
-        console.log(`то что попало в res после getCont - ${res}`);
-        setEmail(res.email);
-        setСurrentUser(res);
+      auth.getContent(jwt).then((user) => {
+        console.log(`то что попало в res после getCont - ${user}`);
+        setСurrentUser(user);
+        setEmail(user.email);
         // console.log(!!res);
-        if (res) {
+        if (user) {
           setLoggedIn(true);
           history.push("/");
         }
