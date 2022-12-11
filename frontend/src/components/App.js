@@ -304,7 +304,9 @@ function App() {
         setСurrentUser(user);
         setEmail(user.email);
         if (user) {
-          api.getCards(jwt)
+          api.getCards(jwt).then((cards)=> {
+            setCards(cards)
+          })
           setLoggedIn(true);
           history.push("/");
         }
