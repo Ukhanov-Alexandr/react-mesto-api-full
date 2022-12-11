@@ -282,7 +282,7 @@ function App() {
       .authorize(email, password)
       .then((data) => {
         if (data.token) {
-
+          tokenCheck()
           // auth.getContent(data.token).then((user)=>{
           //   debugger
           //   setСurrentUser(user);
@@ -290,19 +290,19 @@ function App() {
           //   api.patchProfile(data, data.tokent)
           // })
 
-          setTimeout(() => {
-            setLoggedIn(true);
-            // setEmail(email)
-            // history.push("/");
-          }, 100);
+          // setTimeout(() => {
+          //   setLoggedIn(true);
+          //   setEmail(email)
+          //   history.push("/");
+          // }, 100);
         } else {
           setLoggedIn(false);
           setIsInfoTooltipOpen(true);
         }
       })
-      .then(()=>{
-        tokenCheck()
-      })
+      // .then(()=>{
+      //   tokenCheck()
+      // })
       .catch((err) => console.log(err));
   };
 
@@ -324,9 +324,9 @@ function App() {
       // здесь будем проверять токен
       auth.getContent(jwt).then((user) => {
         console.log(`то что попало в res после getCont - ${user}`);
+        console.dir(user);
         setСurrentUser(user);
         setEmail(user.email);
-        // console.log(!!res);
         if (user) {
           setLoggedIn(true);
           history.push("/");
