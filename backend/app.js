@@ -13,16 +13,11 @@ const NotFoundError = require('./errors/NotFoundError');
 const defaultErrorHandler = require('./errors/defaultErrorHandler');
 const { signupValidate, loginValidate } = require('./middlewares/celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { corsOptions } = require('./utils/constants');
 
 const { PORT = 3000 } = process.env;
 
 const app = express();
-
-const corsOptions = {
-  origin: 'https://mesto.front.ukh.nomoredomains.club',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
 
 app.use(cors(corsOptions));
 
